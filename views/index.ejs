@@ -1,6 +1,9 @@
 <!doctype html>
-<html>
+<html lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width:device-width, initial-scale=1.0">
     <head>
+        
         <title>
             Weather Application
         </title>
@@ -14,12 +17,14 @@
 
 </head>
 <body>
-    <div class="container">
-        <h1>Weather Forecast</h1>
+    <div class="container col-xxl-12 pt-5">
+        <h1 class="fw-bold">Weather Forecast</h1>
         <p>Get current weather information for any location</p>
-        <div class="search-bar">
+        <div class="search-bar border border-white rounded">
+            
             <input type="text" placeholder="Enter city name (e.g., London, Tokyo, New York)">
-            <button>Search</button>
+            <button class="rounded">Search</button>
+            
         </div>
         <div class="location-button">
             <button>Use My Location</button>
@@ -28,9 +33,9 @@
             <input type="checkbox" id="toggle">
             <label for="toggle">°C / °F</label>
         </div>
-        <div class="error-message">
+       <!--<div class="error-message">
             Unable to access your location. Please allow location access or search manually.
-        </div>
+        </div>-->
         <div class="weather-details">
             <h2>Weather Details</h2>
             <p>Feels Like</p>

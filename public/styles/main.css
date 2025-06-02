@@ -1,35 +1,70 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  overflow-x:hidden;
+  overflow-y:hidden;
+  
+}
+
 body {
-            font-family: Arial, sans-serif;
-            background: linear-gradient(to bottom right, #4a00e0, #8e2de2);
+            
+           
             color: white;
             text-align: center;
-            padding: 50px;
+            padding: 0px;
+            margin:0px;
+            font-family: "Merriweather", serif;
+            background: linear-gradient(to bottom right, #4a00e0, #2d7ee2, #78b5ff);
+            background-size: 300% 300%;
+            animation: gradient-animation 2s ease-in-out infinite;
+            
+            
         }
+.gradient-background {
+  
+}
+
+html{
+  scroll-behavior: smooth;
+}
         .container {
-            max-width: 600px;
-            margin: 0 auto;
-            background: rgba(255, 255, 255, 0.1);
+            max-width: 100%;
+            margin: 0px;
             padding: 20px;
-            border-radius: 10px;
+            
         }
         .search-bar {
             display: flex;
-            justify-content: center;
-            margin-bottom: 20px;
+            width:80%;
+            flex:wrap;
+            justify-content: space-evenly;
+            align-items: center;
+            margin:auto;
+            padding:20px;
+            background-color: rgb(214, 236, 255,0.3);
+            opacity: 10;
         }
         .search-bar input {
-            width: 70%;
+            color:white;
+            width: 90%;
             padding: 10px;
             border: none;
+            background-color: rgba(214, 236, 255, 0.197);
             border-radius: 5px 0 0 5px;
+        }
+        .search-bar input::placeholder{
+            color:beige;
+            padding-left:10px;
         }
         .search-bar button {
             padding: 10px;
-            border: none;
+            border:none;
             background: white;
-            color: #4a00e0;
+            color: #78b5ff;
             border-radius: 0 5px 5px 0;
             cursor: pointer;
+            
         }
         .location-button {
             margin-bottom: 20px;
@@ -39,8 +74,9 @@ body {
             border: none;
             border-radius: 5px;
             background: white;
-            color: #4a00e0;
+            color: whitesmoke;
             cursor: pointer;
+            background-color: rgba(214, 236, 255, 0.197);
         }
         .toggle-switch {
             margin-bottom: 20px;
@@ -54,6 +90,8 @@ body {
             background: white;
             color: #4a00e0;
             border-radius: 5px;
+            background-color: rgba(214, 236, 255, 0.197);
+            color:whitesmoke;
         }
         .error-message {
             background: rgba(255, 0, 0, 0.1);
@@ -62,7 +100,19 @@ body {
             margin-bottom: 20px;
         }
         .weather-details {
-            background: rgba(255, 255, 255, 0.1);
             padding: 20px;
             border-radius: 10px;
         }
+
+/*animation*/
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
