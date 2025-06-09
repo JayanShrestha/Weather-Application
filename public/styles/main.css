@@ -87,20 +87,18 @@ html{
             cursor: pointer;
             background-color: rgba(214, 236, 255, 0.197);
         }
-        .toggle-switch {
-            margin-bottom: 20px;
+        .form-check{
+          padding-left:0px;
         }
-        .toggle-switch input {
-            display: none;
+        .form-check .form-check-input{
+          margin-left:0px;
         }
-        .toggle-switch label {
-            cursor: pointer;
-            padding: 10px;
-            background: white;
-            color: #4a00e0;
-            border-radius: 5px;
-            background-color: rgba(214, 236, 255, 0.197);
-            color:whitesmoke;
+        .form-check-input:focus{
+          box-shadow:none;
+        }
+        .form-check-input:checked{
+          border-color:dodgerblue;
+          background-color:dodgerblue;
         }
         .error-message {
             background: rgba(255, 0, 0, 0.1);
@@ -109,8 +107,29 @@ html{
             margin-bottom: 20px;
         }
         .weather-details {
-            padding: 20px;
-            border-radius: 10px;
+          
+            display:flex;
+            flex-wrap:wrap;
+            width:80%;
+            flex-direction: column;
+            justify-content: space-evenly;
+            align-items: center;
+            margin:auto;
+            padding:20px;
+            background-color: rgb(214, 236, 255,0.3);
+            opacity: 10;
+        }
+        .forecast{
+            display:flex;
+            flex-wrap:wrap;
+            width:80%;
+            flex-direction: column;
+            margin:auto;
+            margin-top:2em;
+            
+            padding:20px;
+            background-color: rgb(214, 236, 255,0.3);
+            opacity: 10;
         }
 
 /*animation*/
