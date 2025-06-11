@@ -57,6 +57,6 @@ git push origin master
 I have used my own API key for using the Openweathermap api. The api key can be generated if you sign up to Openweathermap api (https://openweathermap.org/city/2159851). After the API key is generated, export the key from utilities.js(you need to create one) file in the root folder. 
 ### Utilities.js
 ```bash
-export const api_key="46ff71220f7cb273669149bc1cd394a1";
+export const api_key="Your_API_Key";
 ```
 
