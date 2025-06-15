@@ -15,7 +15,7 @@ body {
             padding: 0px;
             margin:0px;
             font-family: "Merriweather", serif;
-            background: linear-gradient(to bottom right,#5409DA,#4E71FF, #8DD8FF,#BBFBFF);
+            background: linear-gradient(to bottom right,#5409DA,#4E71FF, #028cd7);
             background-size: 300% 300%;
             animation: text-animation 4s ease-in-out infinite, gradient-animation 4s ease-in-out infinite;
 
@@ -72,11 +72,22 @@ html{
             border-radius: 0 5px 5px 0;
             cursor: pointer;
             margin-left:5px;
+            text-shadow:none;
            
             
         }
+        .loctemp{
+          width:100%;
+          display:flex;
+          flex-wrap:wrap;
+          flex-direction: row;
+          justify-content: space-between;
+
+        }
         .location-button {
             margin-bottom: 20px;
+            margin-top:20px;
+            
         }
         .location-button button {
             padding: 10px;
@@ -87,8 +98,10 @@ html{
             cursor: pointer;
             background-color: rgba(214, 236, 255, 0.197);
         }
+        
         .form-check{
           padding-left:0px;
+         
         }
         .form-check .form-check-input{
           margin-left:0px;
@@ -97,8 +110,8 @@ html{
           box-shadow:none;
         }
         .form-check-input:checked{
-          border-color:dodgerblue;
-          background-color:dodgerblue;
+          border-color:skyblue;
+          background-color:skyblue;
         }
         .error-message {
             background: rgba(255, 0, 0, 0.1);
@@ -162,4 +175,15 @@ html{
           margin-top:10px;
             
         }
+}
+@media(max-width:768px){
+  .loctemp{
+          width:100%;
+          display:flex;
+          flex-wrap:wrap;
+          flex-direction: column;
+          justify-content: ;
+
+        }
+       
 }
