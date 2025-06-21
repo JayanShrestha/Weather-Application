@@ -144,6 +144,23 @@ html{
             background-color: rgb(214, 236, 255,0.3);
             opacity: 10;
         }
+.toast {
+   
+    color: #fff;
+    padding: 12px 20px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+    font-family: sans-serif;
+}
+
+ .show{
+animation:show linear 0.5s;
+ }       
+ .hide{
+animation:hide linear 0.5s;
+ }
 
 /*animation*/
 @keyframes gradient-animation {
@@ -168,6 +185,19 @@ html{
     text-shadow: 1px 1px 2px black;
   }
 }
+
+@keyframes show{
+  0%{
+    opacity:0;
+    transform: translateY(-30px) scale(0.9);
+  }
+  100%{
+    opacity:1;
+    transform:translateY(0px) scale(1);
+  }
+}
+
+
 
 @media (max-width: 1053px) {
 .search-bar button {

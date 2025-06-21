@@ -5,9 +5,10 @@ import { api_key } from "./utilities.js";
 
 const app = express();
 const port = 3000;
+const path = "d:/Projects/Weather application using API/public"
 const weatherAPI_URL = "https://api.openweathermap.org/data/2.5/weather";
 const geoAPI_URL = "http://api.openweathermap.org/geo/1.0/direct";
-
+let data;
 
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -15,7 +16,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get("/", (req,res)=>{
     res.render("index.ejs");
-})
+});
 
 app.post("/curweather", async(req,res)=>{
 try{
@@ -47,6 +48,7 @@ try{
         }
     });
     console.log(weather_details.data);
+    res.render("index.ejs",{data:weather_details});
    
        
     
@@ -55,9 +57,9 @@ catch(error){
   console.log("Failed to make connection:", error.message);
   res.render("index.ejs",{error:error.message})
 }
-res.render("index.ejs",);
 
-})
+
+});
 
 
 app.listen(port,()=>{
