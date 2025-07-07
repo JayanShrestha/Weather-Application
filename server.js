@@ -1,21 +1,20 @@
 import express from "express";
 import bodyParser from "body-parser";
 import axios from "axios";
-import { api_key } from "./utilities.js";
+import { api_key, key } from "./utilities.js";
+
 
 const app = express();
 const port = 3000;
-const path = "d:/Projects/Weather application using API/public"
 const weatherAPI_URL = "https://api.openweathermap.org/data/2.5/weather";
 const geoAPI_URL = "http://api.openweathermap.org/geo/1.0/direct";
-let data;
 
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 
 app.get("/", (req,res)=>{
-    res.render("index.ejs");
+    res.render("index.ejs", {googleAPIKey: key});
 });
 
 app.post("/curweather", async(req,res)=>{

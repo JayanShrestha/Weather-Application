@@ -2,9 +2,12 @@
   margin:0;
   padding:0;
   box-sizing:border-box;
-  overflow-x:hidden;
-  overflow-y:hidden;
+  overflow-x:;
+ 
   
+}
+.overflow{
+  overflow-y:hidden;
 }
 
 body {
@@ -81,7 +84,7 @@ html{
           display:flex;
           flex-wrap:wrap;
           flex-direction: row;
-          justify-content: space-between;
+          justify-content: center;
 
         }
         .location-button {
@@ -139,28 +142,40 @@ html{
             flex-direction: column;
             margin:auto;
             margin-top:2em;
-            
             padding:20px;
             background-color: rgb(214, 236, 255,0.3);
-            opacity: 10;
+            
         }
+
+#toast-container{
+  width:100%;
+  display:flex;
+  flex-wrap:wrap;
+  justify-content: center;
+  z-index:9999;
+
+}       
 .toast {
    
     color: #fff;
     padding: 12px 20px;
     margin-bottom: 10px;
     border-radius: 8px;
-    
+    width:80%;
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
     font-family: sans-serif;
+    font-size:1.5rem;
+    opacity:0;
+   
 }
 
  .show{
-animation:show linear 0.5s;
+animation:show linear 0.5s forwards;
  }       
  .hide{
-animation:hide linear 0.5s;
+  animation:hide linear 0.5s forwards;
  }
+ 
 
 /*animation*/
 @keyframes gradient-animation {
@@ -194,6 +209,16 @@ animation:hide linear 0.5s;
   100%{
     opacity:1;
     transform:translateY(0px) scale(1);
+  }
+}
+@keyframes hide{
+  0%{
+    opacity:1;
+    transform: translateY(0px) scale(1);
+  }
+  100%{
+    opacity:0;
+    transform: translateY(-30px) scale(0.9);
   }
 }
 
