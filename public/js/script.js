@@ -1,7 +1,8 @@
 //alert("it is connected");
 //import { key } from "./google";
 const currentLocation = $('#live_location');
-const message ='Fetching the current location!';//message to display on toast message
+const search = $('#search');
+const message ='Fetching the weather details!';//message to display on toast message
 function showToast(message, duration = 5000) {
     const toastContainer = document.getElementById('toast-container');
     const toast = document.createElement('div');
@@ -19,7 +20,7 @@ function showToast(message, duration = 5000) {
         setTimeout(() => {
             toast.remove();
         }, 1000); // Match hide animation duration
-    }, 8000);
+    }, duration);
 }
 
 
@@ -34,15 +35,24 @@ function showToast(message, duration = 5000) {
 window.initMap = function(){
     console.log("Google Maps is loaded");
     getLocation();
+    
 }
     currentLocation.click(()=>{
        currentLocation.css("display", "none");//hides the location button
        setTimeout(()=>{
         currentLocation.css("display", "block")},5000);
        
-        showToast(message);//update user via toast message
+        showToast(message, 5000);//update user via toast message
         getLocation();
        
+    });
+
+    search.click(()=>{
+        search.css("display","none");
+        setTimeout(()=>{
+        search.css("display","block")},5000);
+
+        showToast(message, 5000);
     });
 
     function getLocation(){
@@ -75,7 +85,7 @@ switch(error.code){
 }
     }
 
-function displayLocation(position){
+function displayLocation(position){//position is object or parameter from navigator.geolocation to get coordinates for current location
     const lat = position.coords.latitude;
     const lng = position.coords.longitude;
     console.log(`Current Latitude is ${lat} and longitude is ${lng}`);

@@ -12,42 +12,43 @@ const geoAPI_URL = "http://api.openweathermap.org/geo/1.0/direct";
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 
-
 app.get("/", (req,res)=>{
-    res.render("index.ejs", {googleAPIKey: key});
+    res.render("index.ejs", {googleAPIKey: key});//Api key for google maps
 });
 
 app.post("/curweather", async(req,res)=>{
 try{
-    var location = req.body.location;
+    var location = req.body.location; // requesting the value from location input
    
-    const geocode = await axios.get(geoAPI_URL,{
+    const geocode = await axios.get(geoAPI_URL,{// Getting the geocode for the supplied location from geocoding api
         params:{
             q:location,
             appid:api_key,
         }
     });
-    const response = JSON.stringify(geocode.data);
+    const response = JSON.stringify(geocode.data);// converts the JSON objects to String value
     console.log(response);
-    const result =(geocode.data);
+    const result =(geocode.data);//All the information including lattitude and longitude are received as geocode.data in the form of array
     console.log(result);
     console.log(result[0].name);
 
     var latitude = result[0].lat;
     var longitude = result[0].lon;
 
-    const weather_details = await axios.get(weatherAPI_URL,{
+    const weather_details = await axios.get(weatherAPI_URL,{// Getting the weather details by supplying coordinates from geocode
         params:{
             lat:latitude,
             lon:longitude,
             appid:api_key,
-            units:"metric",
+            units:"metric", //temperature comes in celsius
             
             
         }
     });
+    
     console.log(weather_details.data);
-    res.render("index.ejs",{data:weather_details});
+    console.log(weather_details.data.main.temp);
+    res.render("index.ejs",{data:weather_details.data, googleAPIKey: key});// rendering the landing page with all the weather details and googleAPI key
    
        
     

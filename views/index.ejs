@@ -29,7 +29,7 @@
         <form action="/curweather" method="post" class="d-flex flex-lg-row search-bar border border-white rounded">
             
             <input type="text" placeholder="Enter city name (e.g., Liverpool, Auburn, wollongong....followed by comma and AU )"name="location">
-            <button type="submit" class="rounded">Search</button>
+            <button type="submit" class="rounded" id="search">Search</button>
             
     <div class="loctemp col-lg-12" >
         
@@ -51,26 +51,52 @@
         </div>
    
 
-      
-        <div class="weather-details">
-            <h2 class="overflow">Weather Details</h2>
-            <p>Feels Like</p>
-            <p>Humidity</p>
-            <p>Wind</p>
-            <p>Pressure</p>
+    <div class="weather-details col-md-12 col-lg-12 col-xl-12">  
+    <% if (locals.data) { %> 
+        <div class="weather-icon col-sm-12 col-md-6 col-xl-6 pb-5 d-flex flex-column">
+        <div class="icon">
+            <img src="http://openweathermap.org/img/wn/<%= data.weather[0].icon %>@2x.png" alt="Weather icon">
+        </div>
+        <div class="weather-icon-temp">
+           <b><h1 class="fw-bold"><%=data.main.temp%>°C</h1></b>
+        </div>
+        <div class="weather-icon-description">
+            <b><h3 class=""><%=data.weather[0].description%></h3></b>
+        </div>
+        </div>
+    <%} else{%>    
+        <p>Weather Icon is not available</p>
+        <%}%>   
+        <div class="weather-information">
+            <h3><b>Weather Details</b></h3>
+    <%  if(locals.data){%>
+    
+    <p>Feels Like <b><%=data.main.temp%>°C</b></p>
+    <p>Humidity</p>
+    <p>Wind</p>
+    <p>Pressure</p>
+<% } else { %>
+    <p>Feels Like</p>
+    <p>Humidity</p>
+    <p>Wind</p>
+    <p>Pressure</p>
+<% } %>
+            
+        </div>
         </div>
 
-        <div class="forecast">
-            <h3 class="overflow">5-Day Forecast</h3>
-            <div id="map" style="height: 500px; width: 100%;"></div>
-        </div>
         
- 
+            
+            <div id="map" style="height: 500px; width: 80%; margin:auto;"></div>
+        
+        
+
 <script type="module" src="/js/script.js"></script>
 <script>
     
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=<%= googleAPIKey %>&libraries=marker&callback=initMap&loading=async" defer></script>
+
 
 </body>
 </html>
