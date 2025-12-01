@@ -28,7 +28,7 @@
         <p>Get current weather information for any location</p>
         <form action="/curweather" method="post" class="d-flex flex-lg-row search-bar border border-white rounded">
             
-            <input type="text" placeholder="Enter city name (e.g., Liverpool, Auburn, wollongong....followed by comma and AU )"name="location">
+            <input type="text" placeholder="Enter city name (e.g., Liverpool, Auburn, wollongong....followed by comma and AU or Australia )"name="location">
             <button type="submit" class="rounded" id="search">Search</button>
             
     <div class="loctemp col-lg-12" >
@@ -46,7 +46,9 @@
         <% } %>     
         </form>  
         <div class="location-button mx-lg-3 mx-md-4">
-            <button id="live_location">Use My Location</button>
+
+            <button id="live_location" type="submit">Use My Location</button>
+           
             </div>     
         </div>
    
@@ -67,19 +69,22 @@
     <%} else{%>    
         <p>Weather Icon is not available</p>
         <%}%>   
-        <div class="weather-information">
+        <div class="">
             <h3><b>Weather Details</b></h3>
     <%  if(locals.data){%>
-    
-    <p>Feels Like <b><%=data.main.temp%>°C</b></p>
-    <p>Humidity</p>
-    <p>Wind</p>
-    <p>Pressure</p>
+    <div class="weather-information pt-2">
+    <p class="weather-information-part">Feels Like <b><%=data.main.temp%>°C</b></p>
+    <p class="weather-information-part">Humidity <b><%=data.main.humidity%>°C</b></p>
+    <p class="weather-information-part">Wind <b><%=data.wind.speed%>m/s</b></p>
+    <p class="weather-information-part">Pressure <b><%=data.main.pressure%>hPa</b></p>
+    </div>
 <% } else { %>
-    <p>Feels Like</p>
-    <p>Humidity</p>
-    <p>Wind</p>
-    <p>Pressure</p>
+    <div class="weather-information">
+    <p class="weather-information-part">Feels Like</p>
+    <p class="weather-information-part">Humidity</p>
+    <p class="weather-information-part">Wind</p>
+    <p class="weather-information-part">Pressure</p>
+    </div>
 <% } %>
             
         </div>

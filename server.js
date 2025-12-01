@@ -1,20 +1,28 @@
 import express from "express";
 import bodyParser from "body-parser";
 import axios from "axios";
-import { api_key, key } from "./utilities.js";
+import env from "dotenv";
 
 
 const app = express();
 const port = 3000;
+env.config();
 const weatherAPI_URL = "https://api.openweathermap.org/data/2.5/weather";
 const geoAPI_URL = "http://api.openweathermap.org/geo/1.0/direct";
+const googleAPIKey = process.env.key;
+const geokey = process.env.api_key;
 
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get("/", (req,res)=>{
-    res.render("index.ejs", {googleAPIKey: key});//Api key for google maps
+    res.render("index.ejs", {googleAPIKey: googleAPIKey});//Api key for google maps
+console.log(googleAPIKey);
 });
+
+app.get("/mylocation",(req,res)=>{
+    
+})
 
 app.post("/curweather", async(req,res)=>{
 try{
@@ -23,7 +31,7 @@ try{
     const geocode = await axios.get(geoAPI_URL,{// Getting the geocode for the supplied location from geocoding api
         params:{
             q:location,
-            appid:api_key,
+            appid:geokey,
         }
     });
     const response = JSON.stringify(geocode.data);// converts the JSON objects to String value
@@ -39,7 +47,7 @@ try{
         params:{
             lat:latitude,
             lon:longitude,
-            appid:api_key,
+            appid:geokey,
             units:"metric", //temperature comes in celsius
             
             
@@ -48,14 +56,14 @@ try{
     
     console.log(weather_details.data);
     console.log(weather_details.data.main.temp);
-    res.render("index.ejs",{data:weather_details.data, googleAPIKey: key});// rendering the landing page with all the weather details and googleAPI key
+    res.render("index.ejs",{data:weather_details.data, googleAPIKey: googleAPIKey});// rendering the landing page with all the weather details and googleAPI key
    
        
     
 }
 catch(error){
   console.log("Failed to make connection:", error.message);
-  res.render("index.ejs",{error:error.message})
+  res.render("index.ejs",{error:error.message, googleAPIKey: googleAPIKey})
 }
 
 

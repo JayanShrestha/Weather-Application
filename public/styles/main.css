@@ -122,6 +122,14 @@ html{
             border-radius: 5px;
             margin-bottom: 20px;
         }
+        .weather-information{
+            display:flex;
+            flex-direction: column;
+        }
+        .weather-information-part{
+          display:flex;
+          justify-content: space-between;
+        }
         .weather-details {
           
             display:flex;

@@ -55,7 +55,7 @@ window.initMap = function(){
         showToast(message, 5000);
     });
 
-    function getLocation(){
+    function getLocation(){ //function to get coordinates from the device and use it display google map
         if(navigator.geolocation){
             navigator.geolocation.getCurrentPosition(displayLocation, showError, {enableHighAccuracy: true});
             //displayLocation is a callback function that takes position as its only parameter
@@ -90,7 +90,22 @@ function displayLocation(position){//position is object or parameter from naviga
     const lng = position.coords.longitude;
     console.log(`Current Latitude is ${lat} and longitude is ${lng}`);
     const latlng = {lat, lng};
+    //send coordinates back to backend
+    fetch("/CurrentLocation",{
+        method:"Post",
+        headers:{
+            "Content-Type":"application/json",
+        },
+        body: JSON.stringify({latitude: lat, longitude: lng}),
+    })
+    .then((res)=>res.json())
+    .then((data)=>{
+        console.log("Weather Data:", data);
+    })
+    .catch((err)=>console.error(err));
+    
     showMap(latlng);
+
    
 }
 
