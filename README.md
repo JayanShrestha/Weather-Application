@@ -5,6 +5,7 @@
 - EJS
 - NPM & Node JS
 - Bootstrap
+- API usage
 
 ## Installing npm
 
