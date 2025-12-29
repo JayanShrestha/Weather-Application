@@ -183,7 +183,7 @@ html{
 }       
 .toast {
    
-    color: #fff;
+    
     padding: 12px 20px;
     margin-bottom: 10px;
     border-radius: 8px;
@@ -265,6 +265,19 @@ animation:show linear 0.5s forwards;
           flex-direction: column;
           justify-content: ;
 
+        }
+        .weather-details {
+          
+            display:flex;
+            flex-wrap:wrap;
+            width:80%;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin:auto;
+            padding:20px;
+            background-color: rgb(214, 236, 255,0.3);
+            opacity: 10;
         }
        
 }

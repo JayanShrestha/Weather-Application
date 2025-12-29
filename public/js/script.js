@@ -15,11 +15,10 @@ function showToast(message, duration = 5000) {
     }, 100);
 
     setTimeout(() => {
-        toast.classList.remove('show');
-        toast.classList.add('hide');
+       
         setTimeout(() => {
-            toast.remove();
-        }, 1000); // Match hide animation duration
+           toast.classList.add('hide');
+        }, 5000); // Match hide animation duration
     }, duration);
 }
 
